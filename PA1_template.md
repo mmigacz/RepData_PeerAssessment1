@@ -1,4 +1,9 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
 
 
 ```r
@@ -11,19 +16,6 @@ for (dep in deps){
 
 library(ggplot2)
 library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-## 
-## The following object is masked from 'package:stats':
-## 
-##     filter
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
 ```
 
 ## Loading and preprocessing the data
@@ -54,7 +46,7 @@ data_s <- aggregate(steps ~ date, data=data_c, sum)
 hist(data_s$steps, main="Histogram of the total number of steps taken each day",xlab="steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
 
 
 ```r
@@ -76,7 +68,7 @@ g <- ggplot(data_t, aes(x = interval, y = steps))
 g + geom_line() + labs(title = "Average number of steps taken per interval")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
 
 
@@ -122,7 +114,7 @@ data_fs <- aggregate(steps ~ date, data=data_f, sum)
 hist(data_fs$steps, main="Total number of steps taken each day over filled data",xlab="steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png) 
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png) 
 
 
 ```r
@@ -134,8 +126,8 @@ Comparision of mean and median total number of steps taken per day for raw base 
 
 Parameter     | Base data set           | Data set without missing values
 ------------- | ------------------------|----------------------------------
-**mean**      | 1.0766189\times 10^{4}    | 1.0766189\times 10^{4}
-**median**    | 10765  | 1.0766189\times 10^{4}
+**mean**      | 1.0766189 &times; 10<sup>4</sup>    | 1.0766189 &times; 10<sup>4</sup>
+**median**    | 10765  | 1.0766189 &times; 10<sup>4</sup>
 
 Despite filling missing values, the mean of of total number of steps is the same as in the original data set. The median has changed - it's higher now and equals the mean. It's caused by changing the total number of data samples.
 
@@ -154,6 +146,6 @@ g2 <- ggplot(data_cfr, aes(x = interval, y = avg_steps))
 g2 + geom_line() + facet_grid(weekday~.) + labs(title = "Average number of steps taken per interval", y = "Number of steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png) 
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png) 
 
 On weekdays activity starts and finishes earlier than on weekends. Besides on weekends activity is more smooth.
